@@ -89,7 +89,11 @@
                             <a href="https://github.com/HydraulicViper/HydraulicViper" class="btn btn-lg btn-default" target="_blank">
                                 <i class="fa fa-github"></i>  View source code
                             </a>
-			</div>
+                        </br></br>
+                        <a href="" class="btn btn-lg btn-default" target="_blank">
+                            <i class="fa fa-newspaper-o"></i>  View pre-print
+                        </a>
+                </div>
             </div>
         </div>
     </header>
@@ -103,19 +107,24 @@
                     <hr class="star-primary">
                 </div>
             </div>
+        </div>
+    </section>
+    <section class="success" id="what-2">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-lg-offset-1">
-					<img class="img-responsive" src="img/hv.png" alt="">
-					<img class="img-responsive" src="img/hv.png" alt="">
+                <div class="col-lg-5 col-lg-offset-1">
+					<img class="img-responsive" src="img/plant_pipeline.png" alt="">
                 </div>
-                <div class="col-lg-7 col-lg-offset-1">
+                <div class="col-lg-5 col-lg-offset-1">
                     <p>Hydraulic Viper is a virtual phenotyping pipeline for root hydraulic traits.</p>
                     <p>It is a collection of models working at different scales and able to simulate root water uptake</p>
-					<p>CPantBox allow the creation of root system architecture, GRANAR - MECHA estimate the radial and axial hydraulic conductivity of all root types with different root anatomy and hydrophobic barriers.</p>
-					<p>MARSHAL solve the root system hydraulic architecture and link the rhizosphere hydraulic conductivity with the root system. </p>
-					<p>Hydrus-1D resolve water movement in the soil domain following Couvreur macro-hydraulic properties for root water upteke.</p>
-					<p>The atmospheric boundary condition are set following the Penman-Monteith equations coupled with weather data from NASA POWER</p>
-					
+					<p>1. CPantBox creates of root system architecture.</p>
+                    <p>2. GRANAR-MECHA estimate the specific radial and axial hydraulic conductivities for various types of roots, taking into account root anatomy, sub-cellular hydraulic properties, and maturation rates.</p>
+					<p>3. Hydrus-1D generates the initial soil water profile.</p>
+                    <p>4. MARSHAL solve the root system hydraulic architecture and link the rhizosphere hydraulic conductivity with the root system using equation from Van Lier, et al. 2006 and Schroder, et al., 2009  </p>
+                    <p>5. Convergence between the water demand and the estimated root water uptake. </p>
+					<p>6. Hydrus-1D resolve water movement in the soil domain following Couvreur, et al. 2012 macro-hydraulic properties for root water uptake.</p>
+					<p>7. The atmospheric boundary condition are set following the Penman-Monteith equations coupled with weather data from NASA POWER</p>
                 </div>
 			</div>
         </div>
@@ -123,7 +132,7 @@
 
 
     <!-- About Section -->
-    <section class="success" id="installation">
+    <section class="success1" id="installation">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -132,24 +141,39 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-
-                    <p>Hydraulic Viper is a multi models pipeline which run in R and on linux</p>
-					<p>The installation procedure is not yet available...</p>
+                <div class="col-lg-12 text-center">
+                    <p>Hydraulic Viper is a multi models pipeline which run on linux OS</p>
                 </div>
-                <div class="col-lg-5 col-lg-offset-1">  
+            </div>
+        </div>
 
-                    <h4>1. Install R</h4>
-                    <p>The first step before running GRANAR is to install a working version for R! Installation of R are available here: <a href="https://cran.r-project.org/">https://cran.r-project.org/</a></p>
-                    <h4>2. compile CPlantBox</h4>
-                    <p>check </p>
-					<h4>2. compile Hydrus</h4>
-                    <p>check </p>
-					<h4>2. dowload source code</h4>
-                    <p>check </p>
+    </section>
+    <section class="success" id="installation-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-1">  
+
+                    <h4>1. Load the modules</h4>
+                    <p>CMake 3.9.6 ; GCC 7.3.0 ; Python 3.7.4 ; R 3.6.1</p>
+
+                    <h4>2. Download source code</h4>
+                    <pre>
+git clone https://github.com/HydraulicViper/HydraulicViper/tree/MaizeB73.git</pre>
+                    
+                    <h4>3. compile CPlantBox</h4>
+                    <pre>
+cd CplantBox
+cmake . && make</pre>
+					<h4>4. compile Hydrus</h4>
+                    <pre>
+cd Hydrus
+cmake . [-G "MSYS Makefiles"] && make</pre>
+					<h4>5. Run Hydraulic Viper</h4>
+                    <pre>
+Rscript Rscript B73_lite.R</pre>
 
 
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-5 col-lg-offset-2">
                     <hr class="star-light">
                     <p>Feeling adventurous? Check out the source code.</p>
                     <a href="https://github.com/HydraulicViper/HydraulicViper" class="btn btn-lg btn-primary">
@@ -215,14 +239,17 @@ library(tidyverse)
                 <div class="col-lg-6 col-lg-offset-1 ">
                     <p> 
                     Hydraulic Viper was developed at the Université catholique de Louvain, in the Earth and Life Insititute, in the lab of <a href="http://www.guillaumelobet.be/">Guillaume Lobet</a>.</br></br> 
-                    The primary developpers of the model are <a href="http://www.uclouvain.be/adrien.heymans">Adrien Heymans</a> and Valentin Couvreur.</br></br> 
+                    The primary developpers of the model are <a href="https://heymansadrien.github.io/">Adrien Heymans</a> and Valentin Couvreur.</br></br> 
                     </p>
 
                     <p>
                     Hydraulic viper is in prep:
 
                     <blockquote>
-                        great article
+                        
+                        <a href=""><b>Quantitative multi-scale analysis of water flow determinants in the soil-root system of maize plant</b></br>
+                            Adrien Heymans, Valentin Couvreur, Clément Saint Cast, Guillaume Lobet<br>
+                            ..., 2023</a>  
                     </blockquote>
                     </p>
 					
