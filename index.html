@@ -162,8 +162,9 @@ git clone https://github.com/HydraulicViper/HydraulicViper/tree/MaizeB73.git</pr
                     
                     <h4>3. compile CPlantBox</h4>
                     <pre>
-cd CplantBox
-cmake . && make</pre>
+cd ./CPlantBox
+rm -f CMakeCache.txt
+srun cmake . && make</pre>
 					<h4>4. compile Hydrus</h4>
                     <pre>
 cd Hydrus
@@ -200,10 +201,14 @@ Rscript Rscript B73_lite.R</pre>
                 <div class="col-lg-6 ">
                 <h4>Input files</h4>
                     <p>
-                    Hydraulic Viper uses 
-                    <ul>
-                        <li><code>params</code> : General parameters for </li>
-                    </ul>
+                        CplantBox/modelparameter/B73.xml contains the CplantBox input parameter file to generate the root system architecture. CPlantBow/tutoral/example/python/b73script.py is the associated python script that generates the 53_rootsystem.txt files. 
+                        
+                        EnvCond_proc.R will get the the environment data (Standard evapotranspiration - ET0) from gps coordinates with NASA-POWER and Penman-Monteith Equations. The output/input should be stored in www/Weather.csv
+                        
+                        
+                        <ul>
+                            <li><code>params</code> : General parameters for </li>
+                        </ul>
 
                     </p>
                 <h4>Ouput</h4>
